@@ -77,7 +77,6 @@ namespace sledilnikCovid.Application
 
             for (int i = 0; i < regionIndex; i++)
             {
-
                 int sum = 0;
                 string name = "";
 
@@ -91,32 +90,17 @@ namespace sledilnikCovid.Application
 
                 }
 
-                if (!name.Equals("foreign") &&
-                    !name.Equals("unknown"))
+                LastweekDto temp = new LastweekDto
                 {
-                    LastweekDto temp = new LastweekDto
-                    {
-                        RegionName = name,
-                        LastWeekSum = sum
-                    };
+                    RegionName = name,
+                    LastWeekSum = sum
+                };
 
-                    groupedSums.Add(temp);
-                }
-
+                groupedSums.Add(temp);
+                
             }
-            for (int i = 0; i < groupedSums.Count - 1; i++)
-            {
 
-                for (int j = 0; j < groupedSums.Count - i - 1; j++)
-                {
-
-                    if (groupedSums[j].LastWeekSum < groupedSums[j + 1].LastWeekSum)
-                    {
-
-                        (groupedSums[j], groupedSums[j + 1]) = (groupedSums[j + 1], groupedSums[j]);
-                    }
-                }
-            }
+            groupedSums = groupedSums.OrderByDescending(x => x.LastWeekSum).ToList();
 
             return groupedSums;
 
