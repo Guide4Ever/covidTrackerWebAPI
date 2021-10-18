@@ -22,7 +22,8 @@ namespace sledilnikCovid.Api.Controllers
 
         [HttpGet]
         [Route("cases")]
-        public async Task<ActionResult<List<CasesDto>>> GetCases(string? region, DateTime? from, DateTime? to){
+        public async Task<ActionResult<List<CasesDto>>> GetCases(string? region, DateTime? from, DateTime? to)
+        {
 
             var data = await _regionService.FetchDataCases(region, from, to);
             return Ok(data);
