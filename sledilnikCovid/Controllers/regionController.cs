@@ -19,7 +19,13 @@ namespace sledilnikCovid.Api.Controllers
             _regionService = regionService;
         }
 
-
+        /// <summary>
+        /// Returns all cases with information about date and region based data
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>A list of cases</returns>
         [HttpGet]
         [Route("cases")]
         public async Task<ActionResult<List<CasesDto>>> GetCases(string? region, DateTime? from, DateTime? to)
@@ -29,6 +35,13 @@ namespace sledilnikCovid.Api.Controllers
             return Ok(data);
         }
 
+        /// <summary>
+        /// Returns a list of regions with their sum of active cases for the past 7 days
+        /// </summary>
+        /// <param name="region"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns>A list of regions and appropriate sums</returns>
         [HttpGet]
         [Route("lastweek")]
         public async Task<ActionResult<List<LastweekDto>>> GetLastweek(string? region, DateTime? from, DateTime? to)
