@@ -10,12 +10,12 @@ namespace sledilnikCovid.Api.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class regionController : ControllerBase
+    public class RegionController : ControllerBase
     {
 
         private readonly IRegionService _regionService;
 
-        public regionController(
+        public RegionController(
             IRegionService regionService
             )
         {
