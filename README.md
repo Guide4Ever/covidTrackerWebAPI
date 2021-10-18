@@ -1,4 +1,4 @@
-# WebAPI-assignment
+sledilnikCovid assignment
 WebAPI assignment no.2 for an internship at IndigoLabs
 
 ## Filters (only applicable to app/region/cases)
