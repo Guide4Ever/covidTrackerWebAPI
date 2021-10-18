@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication;
+using sledilnikCovid.Api.Controllers;
 using sledilnikCovid.Application;
 using sledilnikCovid.Application.Contracts;
 using sledilnikCovid.Infrastructure.Implementation;
@@ -6,7 +8,7 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddAuthentication("BasicAuth").AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("BasicAuth", null);
 builder.Services.AddScoped<IRegionService, RegionService>();
 builder.Services.AddSingleton<IFormatFetcher, FormatFetcher>();
 builder.Services.AddControllers();
@@ -37,7 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

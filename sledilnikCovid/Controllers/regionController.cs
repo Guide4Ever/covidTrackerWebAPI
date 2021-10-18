@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using sledilnikCovid.Application.Contracts;
 using sledilnikCovid.Infrastructure.Models;
 
 namespace sledilnikCovid.Api.Controllers
 {   
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
