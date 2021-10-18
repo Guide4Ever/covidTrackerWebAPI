@@ -1,4 +1,5 @@
-sledilnikCovid assignment
+# sledilnikCovid assignment
+
 WebAPI assignment no.2 for an internship at IndigoLabs
 
 ## Filters (only applicable to app/region/cases)
@@ -23,4 +24,4 @@ format. It does not support additional query parameters.
 Username: guide <br/>
 Password: senk
 
-I enabled authentication upon first interaction with the site rather than the specific endpoint (be that \cases or \lastweek).
+User can modify username and password accordingly in appsettings.json file. I enabled authentication upon first interaction with the site rather than the specific endpoint (be that \cases or \lastweek).
