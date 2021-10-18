@@ -29,43 +29,19 @@ namespace sledilnikCovid.Application
             var dateFrom = from ?? DateTime.MinValue;
             var dateTo = to ?? DateTime.MaxValue;
 
-            List<CasesDto> filteredList = new List<CasesDto>();
+            data = data.Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
 
-            //TODO: filtration
-            for (int i = 0; i < data.Count; i++)
+            data = data.Select(x => new CasesDto
             {
-                var row = data[i];
-                var dateThis = row.Date;
-                if (dateThis >= dateFrom &&
-                    dateThis <= dateTo)
-                {
-                    if (region != null)
-                    {
-                        for (int j = 0; j < regionIndex; j++)
-                        {
-                            if (String.Equals(row.Region?[j].RegionName, region))
-                            {
-                                var regionData = new List<RegionData>();
-                                regionData.Add(row.Region[j]);
+                Date = x.Date,
+                Region = x.Region
+                    .Where(r => r.RegionName == region)
+                    .ToList()
+             })
+            .Where(y => y.Region.Any()).ToList();
 
-                                //Reconstruction
-                                filteredList.Add(new CasesDto
-                                {
-                                    Date = dateThis,
-                                    Region = regionData
-                                });
-                            }
-                        }
-                    }
-                    else
-                    {
-                        filteredList.Add(row);
-                    }
-                }
 
-            }
-
-            return filteredList;
+            return data;
         }
 
         public async Task<List<LastweekDto>> FetchDataLastWeek()
