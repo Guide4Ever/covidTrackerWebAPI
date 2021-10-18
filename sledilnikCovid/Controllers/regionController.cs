@@ -36,22 +36,5 @@ namespace sledilnikCovid.Api.Controllers
             return Ok(data);
         }
 
-        /*private static readonly HttpClient client = new HttpClient();
-
-        private async Task<List<string>> getCSV() {
-
-            var response = await client.GetAsync("https://raw.githubusercontent.com/sledilnik/data/master/csv/region-cases.csv");
-
-            if (response.IsSuccessStatusCode)
-            {
-                string responseBody = await response.Content.ReadAsStringAsync();
-                List<string> csv = responseBody.Split('\n').ToList();
-
-                return csv;
-            }
-            else { //TODO: Pohandlaj errorje
-                return null;
-            }
-        }*/
     }
 }
