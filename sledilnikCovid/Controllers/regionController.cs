@@ -4,7 +4,8 @@ using sledilnikCovid.Application.Contracts;
 using sledilnikCovid.Infrastructure.Models;
 
 namespace sledilnikCovid.Api.Controllers
-{
+{   
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class regionController : ControllerBase
@@ -22,25 +23,28 @@ namespace sledilnikCovid.Api.Controllers
         /// <summary>
         /// Returns all cases with information about date and region based data
         /// </summary>
-        /// <param name="region">Filter cases based on this region.</param>
-        /// <param name="from">Filter cases from this date.</param>
-        /// <param name="to">Filter cases to this date.</param>
+        /// <param name="region"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
         /// <returns>A list of cases</returns>
+        /// <response code="200">Returns a list of cases</response>
         [HttpGet]
         [Route("cases")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<CasesDto>>> GetCases(string? region, DateTime? from, DateTime? to)
         {
-
             var data = await _regionService.FetchDataCases(region, from, to);
             return Ok(data);
         }
 
         /// <summary>
-        /// Returns a list of regions with their sum of active cases for the past 7 days.
+        /// Returns a list of regions with their sum of active cases for the past week
         /// </summary>
-        /// <returns>A list of regions and appropriate sums</returns>
+        /// <returns>A list of regions and their appropriate sums</returns>
+        /// <response code="200">Returns a list of regions and their appropriate sums</response>
         [HttpGet]
         [Route("lastweek")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<LastweekDto>>> GetLastweek()
         {
             var data = await _regionService.FetchDataLastWeek();
