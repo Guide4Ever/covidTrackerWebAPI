@@ -19,6 +19,8 @@ It supports **optional** query parameters such as Region, To and From. Upon the 
 It exposes the sum of number of active cases in the past 7 days for each available region, including foreign and unknown. The data set is available in the descending order, ordered by the latter sum. Resultset is written in JSON
 format. It does not support additional query parameters.
 
+## Authentication
+
 * API Authentication (BasicAuth):
 
 Username: guide <br/>
