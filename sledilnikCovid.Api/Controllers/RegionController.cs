@@ -37,7 +37,7 @@ namespace sledilnikCovid.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<CasesDto>>> GetCases(string? region, DateTime? from, DateTime? to)
         {
-            //collect syntax errors
+            //collect syntax and semantic errors
             var validRegions = new List<string> {"lj", "ce", "kr", "nm", "kk", "kp", "mb", "ms", "ng", "po", "sg", "za"};
             var exceptionStack = new List<string>();
             DateTime dDate;
@@ -45,10 +45,10 @@ namespace sledilnikCovid.Api.Controllers
             if (region != null && !validRegions.Contains(region))
                 exceptionStack.Add("Invalid region.");
 
-            if(DateTime.TryParse(from.ToString(),out dDate) || DateTime.TryParse(to.ToString(), out dDate))
-                exceptionStack.Add("Invalid date format.");
+            if (from > to)
+                exceptionStack.Add("'From' date cannot be later than 'To' date");
 
-            //evaluate syntax errors
+            //evaluate syntax and semantic errors
             if (exceptionStack.Count == 0)
             {
                 var data = await _regionService.FetchDataCases(region, from, to);
