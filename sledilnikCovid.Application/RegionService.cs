@@ -64,7 +64,6 @@ namespace sledilnikCovid.Application
                     var regionThis = row.Region?[i];
 
                     sum += regionThis.DailyActiveCases;
-
                 }
 
                 LastweekDto temp = new LastweekDto
