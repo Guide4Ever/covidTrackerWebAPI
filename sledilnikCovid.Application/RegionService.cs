@@ -36,7 +36,7 @@ namespace sledilnikCovid.Application
                 data = data.Select(x => new CasesDto
                 {
                     Date = x.Date,
-                    Region = x.Region
+                    Region = x.Region?
                         .Where(r => r.RegionName == region)
                         .ToList()
                 })
@@ -49,23 +49,24 @@ namespace sledilnikCovid.Application
         public async Task<List<LastweekDto>> FetchDataLastWeek()
         {
             var data = await _formatFetcher.FetchCases();
-            var regionIndex = data[0].Region.Count;
+            var dataLastWeek = data.TakeLast(7).ToList();
 
+            var regionIndex = data[0].Region.Count;
             List<LastweekDto> groupedSums = new List<LastweekDto>();
 
             Enumerable.Range(0, regionIndex).ToList().
                 ForEach(x =>
                 {
-                    int sum = 0;
+                    int sumTotal = 0;
                     string name = data[0].Region[x].RegionName;
 
                     //logika za sumiranje
-                    Enumerable.Range(data.Count - 7, 7).ToList().ForEach(t => sum += data[t].Region[x].DailyActiveCases);
+                    sumTotal = dataLastWeek.Aggregate(0, (sum, b) => sum + b.Region[x].DailyActiveCases);
 
                     LastweekDto temp = new LastweekDto
                     {
                         RegionName = name,
-                        LastWeekSum = sum
+                        LastWeekSum = sumTotal
                     };
 
                     groupedSums.Add(temp);
