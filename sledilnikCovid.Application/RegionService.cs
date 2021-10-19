@@ -23,8 +23,10 @@ namespace sledilnikCovid.Application
 
         public async Task<List<CasesDto>> FetchDataCases(string? region, DateTime? from, DateTime? to)
         {
+
             var data = await _formatFetcher.FetchCases();
-            int regionIndex = data[0].Region.Count;
+
+            //check Semantics
 
             if (from != null) 
                 data = data.Where(x => x.Date >= from).ToList();

@@ -30,13 +30,34 @@ namespace sledilnikCovid.Api.Controllers
         /// <param name="to"></param>
         /// <returns>A list of cases</returns>
         /// <response code="200">Returns a list of cases</response>
+        /// <response code="400">Returns an exception based on the issue at hand</response>
         [HttpGet]
         [Route("cases")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<CasesDto>>> GetCases(string? region, DateTime? from, DateTime? to)
         {
-            var data = await _regionService.FetchDataCases(region, from, to);
-            return Ok(data);
+            //collect syntax errors
+            var validRegions = new List<string> {"lj", "ce", "kr", "nm", "kk", "kp", "mb", "ms", "ng", "po", "sg", "za"};
+            var exceptionStack = new List<string>();
+            DateTime dDate;
+
+            if (region != null && !validRegions.Contains(region))
+                exceptionStack.Add("Invalid region.");
+
+            if(DateTime.TryParse(from.ToString(),out dDate) || DateTime.TryParse(to.ToString(), out dDate))
+                exceptionStack.Add("Invalid date format.");
+
+            //evaluate syntax errors
+            if (exceptionStack.Count == 0)
+            {
+                var data = await _regionService.FetchDataCases(region, from, to);
+                return Ok(data);
+            }
+            else {
+                return BadRequest(exceptionStack);
+            }
+
         }
 
         /// <summary>
@@ -44,9 +65,11 @@ namespace sledilnikCovid.Api.Controllers
         /// </summary>
         /// <returns>A list of regions and their appropriate sums</returns>
         /// <response code="200">Returns a list of regions and their appropriate sums</response>
+        /// <response code="400">Returns an exception based on the issue at hand</response>
         [HttpGet]
         [Route("lastweek")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<LastweekDto>>> GetLastweek()
         {
             var data = await _regionService.FetchDataLastWeek();

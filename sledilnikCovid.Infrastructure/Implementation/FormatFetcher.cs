@@ -26,7 +26,7 @@ namespace sledilnikCovid.Infrastructure.Implementation
                 return responseList;
             }
             else
-            { //TODO: pohandlaj errorje
+            { 
                 return null;
             }
         }
