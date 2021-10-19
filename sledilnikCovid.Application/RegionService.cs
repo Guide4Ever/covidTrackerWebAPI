@@ -26,20 +26,22 @@ namespace sledilnikCovid.Application
             var data = await _formatFetcher.FetchCases();
             int regionIndex = data[0].Region.Count;
 
-            var dateFrom = from ?? DateTime.MinValue;
-            var dateTo = to ?? DateTime.MaxValue;
+            if (from != null) 
+                data = data.Where(x => x.Date >= from).ToList();
+            
+            if (to != null)
+                data = data.Where(x => x.Date <= to).ToList();
 
-            data = data.Where(x => x.Date >= dateFrom && x.Date <= dateTo).ToList();
-
-            data = data.Select(x => new CasesDto
-            {
-                Date = x.Date,
-                Region = x.Region
-                    .Where(r => r.RegionName == region)
-                    .ToList()
-             })
-            .Where(y => y.Region.Any()).ToList();
-
+            if (region != null) {
+                data = data.Select(x => new CasesDto
+                {
+                    Date = x.Date,
+                    Region = x.Region
+                        .Where(r => r.RegionName == region)
+                        .ToList()
+                })
+                .Where(y => y.Region.Any()).ToList();
+            }
 
             return data;
         }
@@ -54,14 +56,13 @@ namespace sledilnikCovid.Application
             for (int i = 0; i < regionIndex; i++)
             {
                 int sum = 0;
-                string name = "";
+                string name = data[0].Region?[i].RegionName;
 
                 for (int j = data.Count - 7; j < data.Count; j++)
                 {
                     var row = data[j];
                     var regionThis = row.Region?[i];
 
-                    name = regionThis.RegionName;
                     sum += regionThis.DailyActiveCases;
 
                 }
