@@ -26,4 +26,4 @@ format. It does not support additional query parameters.
 Username: guide <br/>
 Password: senk
 
-User can modify username and password accordingly in appsettings.json file. I enabled authentication upon first interaction with the site rather than the specific endpoint (be that \cases or \lastweek).
+User can modify username and password accordingly in `appsettings.json` file. I enabled authentication upon first interaction with the site rather than the specific endpoint (be that \cases or \lastweek).
