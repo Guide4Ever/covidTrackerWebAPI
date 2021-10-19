@@ -33,7 +33,6 @@ namespace sledilnikCovid.Infrastructure.Implementation
 
         public List<Tuple<string, int>> GetListOfRegions(List<string> header)
         {
-            //string = region, int = index
             List<Tuple<string, int>> regions = new List<Tuple<string, int>>();
             string regionPrev = "", regionNext = "";
 
@@ -51,7 +50,6 @@ namespace sledilnikCovid.Infrastructure.Implementation
 
             return regions;
         }
-
 
         public async Task<List<CasesDto>> FetchCases() {
 
@@ -87,8 +85,6 @@ namespace sledilnikCovid.Infrastructure.Implementation
                             : int.Parse(splitRow[allRegions[index].Item2 + 3]);
                     var svtd = (splitRow[allRegions[index].Item2 + 4] == "") ? 0
                             : int.Parse(splitRow[allRegions[index].Item2 + 4]);
-
-
 
                     RegionData tempRegion = new RegionData
                     {

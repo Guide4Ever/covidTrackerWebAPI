@@ -53,28 +53,23 @@ namespace sledilnikCovid.Application
 
             List<LastweekDto> groupedSums = new List<LastweekDto>();
 
-            for (int i = 0; i < regionIndex; i++)
-            {
-                int sum = 0;
-                string name = data[0].Region?[i].RegionName;
-
-                for (int j = data.Count - 7; j < data.Count; j++)
+            Enumerable.Range(0, regionIndex).ToList().
+                ForEach(x =>
                 {
-                    var row = data[j];
-                    var regionThis = row.Region?[i];
+                    int sum = 0;
+                    string name = data[0].Region[x].RegionName;
 
-                    sum += regionThis.DailyActiveCases;
-                }
+                    //logika za sumiranje
+                    Enumerable.Range(data.Count - 7, 7).ToList().ForEach(t => sum += data[t].Region[x].DailyActiveCases);
 
-                LastweekDto temp = new LastweekDto
-                {
-                    RegionName = name,
-                    LastWeekSum = sum
-                };
+                    LastweekDto temp = new LastweekDto
+                    {
+                        RegionName = name,
+                        LastWeekSum = sum
+                    };
 
-                groupedSums.Add(temp);
-                
-            }
+                    groupedSums.Add(temp);
+                });
 
             groupedSums = groupedSums.OrderByDescending(x => x.LastWeekSum).ToList();
 
