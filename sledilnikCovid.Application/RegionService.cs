@@ -1,6 +1,6 @@
 ﻿using sledilnikCovid.Application.Contracts;
+using sledilnikCovid.Core.Models;
 using sledilnikCovid.Infrastructure.Interfaces;
-using sledilnikCovid.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

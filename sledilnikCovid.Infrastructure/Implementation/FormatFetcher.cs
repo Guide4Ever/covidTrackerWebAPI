@@ -1,5 +1,5 @@
-﻿using sledilnikCovid.Infrastructure.Interfaces;
-using sledilnikCovid.Infrastructure.Models;
+﻿using sledilnikCovid.Core.Models;
+using sledilnikCovid.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using sledilnikCovid.Application.Contracts;
-using sledilnikCovid.Infrastructure.Models;
+using sledilnikCovid.Core.Models;
 
 namespace sledilnikCovid.Api.Controllers
 {   
