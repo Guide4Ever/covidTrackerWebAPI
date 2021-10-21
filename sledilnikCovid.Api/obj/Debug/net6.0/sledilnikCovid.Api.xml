@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>sledilnikCovid.Api</name>
+    </assembly>
+    <members>
+        <member name="M:sledilnikCovid.Api.Controllers.RegionController.GetCases(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Returns all cases with information about date and region based data
+            </summary>
+            <param name="region"></param>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns>A list of cases</returns>
+            <response code="200">Returns a list of cases</response>
+            <response code="400">Returns an exception based on the issue at hand</response>
+        </member>
+        <member name="M:sledilnikCovid.Api.Controllers.RegionController.GetLastweek">
+            <summary>
+            Returns a list of regions with their sum of active cases for the past week
+            </summary>
+            <returns>A list of regions and their appropriate sums</returns>
+            <response code="200">Returns a list of regions and their appropriate sums</response>
+            <response code="400">Returns an exception based on the issue at hand</response>
+        </member>
+    </members>
+</doc>

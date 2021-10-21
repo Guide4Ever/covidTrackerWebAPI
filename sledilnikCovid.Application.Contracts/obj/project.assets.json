@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "sledilnikCovid.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/sledilnikCovid.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/sledilnikCovid.Core.dll": {}
+        }
+      },
+      "sledilnikCovid.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "sledilnikCovid.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/sledilnikCovid.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/sledilnikCovid.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "sledilnikCovid.Core/1.0.0": {
+      "type": "project",
+      "path": "../sledilnikCovid.Core/sledilnikCovid.Core.csproj",
+      "msbuildProject": "../sledilnikCovid.Core/sledilnikCovid.Core.csproj"
+    },
+    "sledilnikCovid.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../sledilnikCovid.Infrastructure/sledilnikCovid.Infrastructure.csproj",
+      "msbuildProject": "../sledilnikCovid.Infrastructure/sledilnikCovid.Infrastructure.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "sledilnikCovid.Infrastructure >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\guide\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\guide\\source\\repos\\sledilnikCovid\\sledilnikCovid.Application.Contracts\\sledilnikCovid.Application.Contracts.csproj",
+      "projectName": "sledilnikCovid.Application.Contracts",
+      "projectPath": "C:\\Users\\guide\\source\\repos\\sledilnikCovid\\sledilnikCovid.Application.Contracts\\sledilnikCovid.Application.Contracts.csproj",
+      "packagesPath": "C:\\Users\\guide\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\guide\\source\\repos\\sledilnikCovid\\sledilnikCovid.Application.Contracts\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\guide\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\guide\\source\\repos\\sledilnikCovid\\sledilnikCovid.Infrastructure\\sledilnikCovid.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\guide\\source\\repos\\sledilnikCovid\\sledilnikCovid.Infrastructure\\sledilnikCovid.Infrastructure.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.2.21505.57\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
