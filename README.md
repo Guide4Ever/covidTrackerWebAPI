@@ -1,5 +1,6 @@
 # covidTrackerWebAPI
 .NET Core 6.0 WebAPI CovidDataTracker
+Full assignment is available on master branch. This is main branch.
 
 ## Filters (only applicable to app/region/cases)
 
