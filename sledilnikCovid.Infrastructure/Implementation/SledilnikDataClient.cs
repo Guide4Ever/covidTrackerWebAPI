@@ -27,6 +27,7 @@ namespace sledilnikCovid.Infrastructure.Implementation
             }
             else
             { 
+                //TODO
                 return null;
             }
         }

@@ -9,7 +9,7 @@ namespace sledilnikCovid.Application.Contracts
 {
     public interface IRegionService
     {
-        public Task<List<CasesDto>> FetchDataCases(string? region, DateTime? from, DateTime? to);
+        public Task<List<CasesDto>> FetchDataCases(string region, DateTime? from, DateTime? to);
 
         public Task<List<LastweekDto>> FetchDataLastWeek();
     }

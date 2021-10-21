@@ -12,5 +12,6 @@ namespace sledilnikCovid.Core.Models
 
         public List<RegionData>? Region { get; set; }
 
+
     }
 }

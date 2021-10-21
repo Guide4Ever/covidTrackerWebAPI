@@ -62,7 +62,6 @@ namespace sledilnikCovid.Application
                     int sumTotal = 0;
                     string name = data[0].Region[x].RegionName;
 
-                    //logika za sumiranje
                     sumTotal = dataLastWeek.Aggregate(0, (sum, b) => sum + b.Region[x].DailyActiveCases);
 
                     LastweekDto temp = new LastweekDto
