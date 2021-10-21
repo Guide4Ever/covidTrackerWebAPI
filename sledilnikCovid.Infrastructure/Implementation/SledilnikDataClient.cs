@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace sledilnikCovid.Infrastructure.Implementation
 {
-    public class FormatFetcher : IFormatFetcher
+    public class SledilnikDataClient : IFormatFetcher
     {
 
         private static readonly HttpClient client = new HttpClient();

@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication("BasicAuth").AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("BasicAuth", null);
 builder.Services.AddScoped<IRegionService, RegionService>();
-builder.Services.AddSingleton<IFormatFetcher, FormatFetcher>();
+builder.Services.AddSingleton<IFormatFetcher, SledilnikDataClient>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
